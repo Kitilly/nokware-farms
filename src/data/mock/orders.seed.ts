@@ -1,0 +1,131 @@
+import type { Order } from '@/types/order'
+
+const daysAgo = (d: number) => new Date(Date.now() - d * 86_400_000).toISOString()
+
+const seedAddress = {
+  id: 'addr-seed-home',
+  label: 'Home' as const,
+  recipientName: 'Ama Mensah',
+  phone: '+233 24 555 0110',
+  line1: 'American House Rd',
+  city: 'Accra',
+  region: 'Greater Accra',
+  isDefault: true,
+  deliveryZoneId: 'zone-east-legon',
+  createdAt: daysAgo(40),
+}
+
+// A small amount of pre-existing order history so Orders/Tracking feel real
+// immediately, without requiring a fresh demo session to place several
+// orders first. Orders created live during the demo are appended alongside these.
+export const ordersSeed: Order[] = [
+  {
+    id: 'order-seed-1',
+    orderNumber: 'NF-2026-4821',
+    createdAt: daysAgo(6),
+    status: 'completed',
+    items: [
+      {
+        productId: 'chicken-breast-boneless',
+        productSlug: 'chicken-breast-boneless',
+        productType: 'meat-product',
+        name: 'Chicken Breast, Boneless',
+        image: 'placeholder:chicken-meat',
+        selection: { weightOptionId: '1kg', weightLabel: '1kg' },
+        quantity: 1,
+        unitPrice: 42,
+        itemTotal: 42,
+        priceUnit: 'per-kg',
+        isPricePending: false,
+        fulfillmentGroupId: 'group-1',
+      },
+      {
+        productId: 'beef-cubes-boneless',
+        productSlug: 'beef-cubes-boneless',
+        productType: 'meat-product',
+        name: 'Fresh Beef Cubes, Boneless',
+        image: 'placeholder:beef',
+        selection: { weightOptionId: '2kg', weightLabel: '2kg' },
+        quantity: 1,
+        unitPrice: 96,
+        itemTotal: 96,
+        priceUnit: 'per-kg',
+        isPricePending: false,
+        fulfillmentGroupId: 'group-1',
+      },
+    ],
+    fulfillmentGroups: [
+      {
+        id: 'group-1',
+        type: 'delivery',
+        isLiveAnimal: false,
+        itemIds: ['chicken-breast-boneless', 'beef-cubes-boneless'],
+        estimatedDateLabel: daysAgo(6).slice(0, 10),
+        slot: null,
+      },
+    ],
+    address: seedAddress,
+    contact: { name: 'Ama Mensah', phone: '+233 24 555 0110' },
+    paymentMethod: { type: 'mobile-money', label: 'Mobile Money •••0110' },
+    paymentStatus: 'paid',
+    subtotal: 138,
+    deliveryFee: 15,
+    discount: 0,
+    total: 153,
+    timelineType: 'standard',
+    timelineEvents: [
+      { status: 'placed', label: 'Order placed', timestamp: daysAgo(6), completed: true },
+      { status: 'confirmed', label: 'Farm confirmed', timestamp: daysAgo(6), completed: true },
+      { status: 'processing', label: 'Processing', timestamp: daysAgo(5), completed: true },
+      { status: 'ready', label: 'Ready', timestamp: daysAgo(5), completed: true },
+      { status: 'out-for-delivery', label: 'Out for delivery', timestamp: daysAgo(5), completed: true },
+      { status: 'delivered', label: 'Delivered', timestamp: daysAgo(5), completed: true },
+    ],
+  },
+  {
+    id: 'order-seed-2',
+    orderNumber: 'NF-2026-4756',
+    createdAt: daysAgo(14),
+    status: 'cancelled',
+    items: [
+      {
+        productId: 'pork-chops',
+        productSlug: 'pork-chops',
+        productType: 'meat-product',
+        name: 'Fresh Pork Chops',
+        image: 'placeholder:pork',
+        selection: { weightOptionId: '1kg', weightLabel: '1kg' },
+        quantity: 1,
+        unitPrice: 38,
+        itemTotal: 38,
+        priceUnit: 'per-kg',
+        isPricePending: false,
+        fulfillmentGroupId: 'group-1',
+      },
+    ],
+    fulfillmentGroups: [
+      {
+        id: 'group-1',
+        type: 'delivery',
+        isLiveAnimal: false,
+        itemIds: ['pork-chops'],
+        estimatedDateLabel: daysAgo(14).slice(0, 10),
+        slot: null,
+      },
+    ],
+    address: seedAddress,
+    contact: { name: 'Ama Mensah', phone: '+233 24 555 0110' },
+    paymentMethod: { type: 'card', label: 'Card •••4412' },
+    paymentStatus: 'refunded',
+    subtotal: 38,
+    deliveryFee: 15,
+    discount: 0,
+    total: 53,
+    timelineType: 'standard',
+    timelineEvents: [
+      { status: 'placed', label: 'Order placed', timestamp: daysAgo(14), completed: true },
+      { status: 'cancelled', label: 'Cancelled', timestamp: daysAgo(14), completed: true },
+    ],
+    cancellationReason: 'Customer requested cancellation before processing began.',
+  },
+]

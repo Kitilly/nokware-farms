@@ -1,0 +1,186 @@
+@import 'tailwindcss';
+
+@theme {
+  /* ---------- Color: Forest green (primary brand) ---------- */
+  --color-forest-50: #eaf1ec;
+  --color-forest-100: #cfe0d5;
+  --color-forest-200: #a8c9b4;
+  --color-forest-300: #7faf91;
+  --color-forest-400: #4f8c69;
+  --color-forest-500: #2f6b47;
+  --color-forest-600: #1f4d36;
+  --color-forest-700: #183c2a;
+  --color-forest-800: #122d20;
+  --color-forest-900: #0c1f16;
+
+  /* ---------- Color: Cream / ivory (background) ---------- */
+  --color-cream-50: #fffefb;
+  --color-cream-100: #fbf7ef;
+  --color-cream-200: #f3ecdd;
+  --color-cream-300: #eae1cc;
+  --color-cream-400: #dfd3b8;
+
+  /* ---------- Color: Sage (muted secondary) ---------- */
+  --color-sage-50: #f2f5f0;
+  --color-sage-100: #e7ede3;
+  --color-sage-200: #d5decd;
+  --color-sage-300: #c3d0bb;
+  --color-sage-400: #a8b99c;
+  --color-sage-500: #93a98a;
+  --color-sage-600: #7c9273;
+  --color-sage-700: #64785d;
+  --color-sage-800: #4e5d48;
+  --color-sage-900: #384333;
+
+  /* ---------- Color: Natural brown ---------- */
+  --color-brown-50: #f7f1e8;
+  --color-brown-100: #eee0cc;
+  --color-brown-200: #dfc9a8;
+  --color-brown-300: #c7a883;
+  --color-brown-400: #ad8a5f;
+  --color-brown-500: #8c6239;
+  --color-brown-600: #74502f;
+  --color-brown-700: #5a3e24;
+  --color-brown-800: #422d1a;
+  --color-brown-900: #2c1e11;
+
+  /* ---------- Color: Terracotta (restrained accent) ---------- */
+  --color-terracotta-50: #fcf0e9;
+  --color-terracotta-100: #f7dcc8;
+  --color-terracotta-200: #f0be97;
+  --color-terracotta-300: #e8a177;
+  --color-terracotta-400: #e08a5b;
+  --color-terracotta-500: #c1622d;
+  --color-terracotta-600: #9c4c21;
+  --color-terracotta-700: #7a3b1a;
+  --color-terracotta-800: #582a13;
+  --color-terracotta-900: #3a1b0c;
+
+  /* ---------- Color: Charcoal (text) ---------- */
+  --color-charcoal-50: #f7f7f6;
+  --color-charcoal-100: #ededea;
+  --color-charcoal-200: #c7c4b7;
+  --color-charcoal-300: #aca89a;
+  --color-charcoal-400: #8c8a80;
+  --color-charcoal-500: #6e6c63;
+  --color-charcoal-600: #55534c;
+  --color-charcoal-700: #403e39;
+  --color-charcoal-800: #2d2c28;
+  --color-charcoal-900: #23221f;
+
+  /* ---------- Color: Borders ---------- */
+  --color-border: #e3dcc9;
+  --color-border-strong: #cbc2a8;
+
+  /* ---------- Color: Status (kept distinct from terracotta accent) ---------- */
+  --color-success: #2f6b47;
+  --color-success-bg: #e7f0ea;
+  --color-warning: #b8862c;
+  --color-warning-bg: #faf1e0;
+  --color-error: #b3261e;
+  --color-error-bg: #fbe9e8;
+  --color-info: #3b6e91;
+  --color-info-bg: #e8f0f5;
+
+  /* ---------- Typography ---------- */
+  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+
+  --text-display: 2.25rem;
+  --text-display--line-height: 2.75rem;
+  --text-display--font-weight: 600;
+  --text-h1: 1.75rem;
+  --text-h1--line-height: 2.125rem;
+  --text-h1--font-weight: 600;
+  --text-h2: 1.375rem;
+  --text-h2--line-height: 1.75rem;
+  --text-h2--font-weight: 600;
+  --text-h3: 1.125rem;
+  --text-h3--line-height: 1.5rem;
+  --text-h3--font-weight: 600;
+  --text-body-lg: 1rem;
+  --text-body-lg--line-height: 1.5rem;
+  --text-body: 0.875rem;
+  --text-body--line-height: 1.25rem;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1rem;
+  --text-label: 0.75rem;
+  --text-label--line-height: 1rem;
+  --text-label--letter-spacing: 0.06em;
+
+  /* ---------- Radii ---------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+
+  /* ---------- Shadows ---------- */
+  --shadow-xs: 0 1px 2px rgba(35, 34, 31, 0.04);
+  --shadow-sm: 0 2px 6px rgba(35, 34, 31, 0.06);
+  --shadow-md: 0 6px 16px rgba(35, 34, 31, 0.08);
+  --shadow-lg: 0 12px 32px rgba(35, 34, 31, 0.14);
+  --shadow-focus: 0 0 0 3px rgba(47, 107, 71, 0.35);
+
+  /* ---------- Breakpoints (documented primary targets: 360 / 390 / 430 mobile) ---------- */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1440px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream-100);
+    color: var(--color-charcoal-900);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background-color: var(--color-forest-200);
+    color: var(--color-forest-900);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
