@@ -28,3 +28,15 @@ export function formatPriceWithUnit(amount: number, unit: PriceUnit): string {
   const prefix = unit === 'from-per-kg' ? 'From ' : ''
   return `${prefix}${formatMoney(amount)}${priceUnitSuffix[unit]}`
 }
+
+/**
+ * Same content as formatPriceWithUnit, split so the amount can be emphasized
+ * and the unit set quieter — "GHS 1,450" + " per animal".
+ */
+export function formatPriceParts(amount: number, unit: PriceUnit): { prefix: string; amount: string; suffix: string } {
+  return {
+    prefix: unit === 'from-per-kg' ? 'From ' : '',
+    amount: formatMoney(amount),
+    suffix: priceUnitSuffix[unit],
+  }
+}

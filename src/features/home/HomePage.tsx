@@ -5,7 +5,7 @@ import { AppShell } from '@/components/layout/AppShell'
 import { SupportFooter } from '@/components/layout/SupportFooter'
 import { LocationHeader } from '@/components/domain/location/LocationHeader'
 import { SearchBar } from '@/components/domain/search/SearchBar'
-import { PromoBanner } from './sections/PromoBanner'
+import { HomeHero } from './sections/HomeHero'
 import { CategoryShortcuts } from './sections/CategoryShortcuts'
 import { ProductRail } from './sections/ProductRail'
 import { TrustIndicators } from './sections/TrustIndicators'
@@ -73,8 +73,9 @@ export function HomePage() {
           </p>
         )}
 
-        <div className="mt-2 space-y-1 pb-6">
-          <PromoBanner />
+        <HomeHero />
+
+        <div className="space-y-6 pb-10 md:space-y-10">
           <CategoryShortcuts />
           <ProductRail title="Popular livestock" products={popularLivestock.products} isLoading={popularLivestock.isLoading} seeAllHref="/shop/live-livestock" />
           <ProductRail title="Fresh meat" products={freshMeat.products} isLoading={freshMeat.isLoading} seeAllHref="/shop/fresh-meat" />

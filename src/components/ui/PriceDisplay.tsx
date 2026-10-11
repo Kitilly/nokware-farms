@@ -1,4 +1,4 @@
-import { formatPriceWithUnit, formatMoney } from '@/lib/currency'
+import { formatPriceParts, formatMoney } from '@/lib/currency'
 import { cn } from '@/lib/utils'
 import type { PriceUnit } from '@/types/product'
 
@@ -17,9 +17,14 @@ const sizeClasses = {
 }
 
 export function PriceDisplay({ amount, unit, size = 'md', isPending, className }: PriceDisplayProps) {
+  const parts = formatPriceParts(amount, unit)
   return (
-    <span className={cn('inline-flex flex-wrap items-baseline gap-1.5', className)}>
-      <span className={cn(sizeClasses[size], 'text-charcoal-900')}>{formatPriceWithUnit(amount, unit)}</span>
+    <span className={cn('inline-flex flex-wrap items-baseline gap-x-1.5', className)}>
+      <span className={cn(sizeClasses[size], 'whitespace-nowrap text-charcoal-900 tabular-nums')}>
+        {parts.prefix && <span className="font-normal text-charcoal-500">{parts.prefix}</span>}
+        {parts.amount}
+        <span className="text-[0.8em] font-normal text-charcoal-500">{parts.suffix}</span>
+      </span>
       {isPending && <span className="text-caption text-charcoal-500">(estimated)</span>}
     </span>
   )

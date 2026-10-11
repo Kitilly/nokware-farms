@@ -75,7 +75,7 @@
   /* ---------- Color: Status (kept distinct from terracotta accent) ---------- */
   --color-success: #2f6b47;
   --color-success-bg: #e7f0ea;
-  --color-warning: #b8862c;
+  --color-warning: #8a5f12;
   --color-warning-bg: #faf1e0;
   --color-error: #b3261e;
   --color-error-bg: #fbe9e8;
@@ -83,8 +83,8 @@
   --color-info-bg: #e8f0f5;
 
   /* ---------- Typography ---------- */
-  --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
 
   --text-display: 2.25rem;
   --text-display--line-height: 2.75rem;
@@ -150,6 +150,13 @@
   h2,
   h3 {
     font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.012em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
   }
 
   :focus-visible {

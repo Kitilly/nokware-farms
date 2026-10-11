@@ -4,15 +4,17 @@ export function useCountdown(initialSeconds: number): { secondsLeft: number; res
   const [secondsLeft, setSecondsLeft] = useState(initialSeconds)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
+  const isRunning = secondsLeft > 0
+
   useEffect(() => {
-    if (secondsLeft <= 0) return
+    if (!isRunning) return
     intervalRef.current = setInterval(() => {
       setSecondsLeft((s) => Math.max(0, s - 1))
     }, 1000)
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current)
     }
-  }, [secondsLeft > 0])
+  }, [isRunning])
 
   const restart = (seconds: number) => setSecondsLeft(seconds)
 

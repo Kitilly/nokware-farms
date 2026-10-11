@@ -49,8 +49,10 @@ export function MeatDetailPage() {
 
   useEffect(() => {
     if (!slug) return
+    let cancelled = false
     setProduct(undefined)
     getProductBySlug(slug).then((p) => {
+      if (cancelled) return
       if (p && p.type === 'meat-product') {
         setProduct(p)
         track('product_viewed', { productId: p.id })
@@ -69,13 +71,21 @@ export function MeatDetailPage() {
         setProduct(null)
       }
     })
-  }, [slug])
+    return () => {
+      cancelled = true
+    }
+  }, [slug, track])
 
+  const productId = product?.id
   useEffect(() => {
-    if (!product) return
-    getReviews(product.id).then(setReviews)
-    getRatingSummary(product.id).then(setRatingSummary)
-  }, [product?.id])
+    if (!productId) return
+    let cancelled = false
+    getReviews(productId).then((r) => !cancelled && setReviews(r))
+    getRatingSummary(productId).then((r) => !cancelled && setRatingSummary(r))
+    return () => {
+      cancelled = true
+    }
+  }, [productId])
 
   if (product === undefined) {
     return (
@@ -149,8 +159,8 @@ export function MeatDetailPage() {
           <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back
         </button>
 
-        <div className="md:grid md:grid-cols-2 md:gap-10">
-          <div>
+        <div className="md:grid md:grid-cols-2 md:items-start md:gap-10">
+          <div className="md:sticky md:top-24">
             <ProductGallery images={product.images} name={product.name} />
           </div>
 

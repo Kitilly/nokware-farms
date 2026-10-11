@@ -1,3 +1,4 @@
+import { User } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 interface AvatarProps {
@@ -15,7 +16,7 @@ const sizeClasses = {
 }
 
 export function Avatar({ firstName, lastName, imageUrl, size = 'md', className }: AvatarProps) {
-  const initials = `${firstName?.[0] ?? ''}${lastName?.[0] ?? ''}`.toUpperCase() || '?'
+  const initials = `${firstName?.[0] ?? ''}${lastName?.[0] ?? ''}`.toUpperCase()
 
   if (imageUrl) {
     return (
@@ -30,14 +31,14 @@ export function Avatar({ firstName, lastName, imageUrl, size = 'md', className }
   return (
     <div
       role="img"
-      aria-label={`${firstName ?? ''} ${lastName ?? ''}`.trim() || 'Profile initials'}
+      aria-label={`${firstName ?? ''} ${lastName ?? ''}`.trim() || 'Profile'}
       className={cn(
         'flex items-center justify-center rounded-full bg-forest-600 font-semibold text-cream-50',
         sizeClasses[size],
         className,
       )}
     >
-      {initials}
+      {initials || <User className="h-[55%] w-[55%]" strokeWidth={1.75} aria-hidden="true" />}
     </div>
   )
 }

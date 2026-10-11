@@ -194,7 +194,7 @@ export function createMeatProduct(input: MeatInput): MeatProduct {
     farmSource: defaultFarmSource,
     processingTimeHours: input.processingTimeHours ?? 6,
     fulfillmentTypes: input.fulfillmentTypes ?? ['delivery', 'pickup'],
-    freshnessLabel: input.freshnessLabel ?? 'Processed within 24 hours',
+    freshnessLabel: input.freshnessLabel ?? 'Processed in 24h',
     policyNotes: {
       substitutionPolicy: 'If an exact cut is unavailable, our team will contact you with the closest match.',
     },

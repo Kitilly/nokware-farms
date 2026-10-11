@@ -1,32 +1,40 @@
-# React + TypeScript + Vite
+# Nokware Farms
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Customer storefront for Nokware Farms — live livestock, poultry, snails, and fresh meat, ordered online for delivery or farm pickup in Ghana.
 
-Currently, two official plugins are available:
+**Frontend only.** There is no backend: every service in `src/services/` resolves mock data from `src/data/mock/` with simulated latency (`src/services/_client.ts`), and state persists to `localStorage` via Zustand. No real payments, OTPs, or orders are processed.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+React 19 · TypeScript · Vite · Tailwind CSS v4 · Radix UI primitives · Zustand · React Router 7 · lucide icons.
+Fonts are self-hosted via Fontsource: **Source Serif 4** (headings) and **Plus Jakarta Sans** (UI/body).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm ci
+npm run dev      # http://localhost:5173
+npm run build    # type-check + production build to dist/
+npm run lint     # oxlint
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Demo login: any valid Ghana mobile number, OTP `123456` (see `src/config/app.config.ts`).
+
+## Where things live
+
+| Path | What |
+| --- | --- |
+| `src/features/` | Route-level pages (home, shop, product, cart, checkout, orders, account, onboarding) |
+| `src/components/ui/` | Design-system primitives |
+| `src/components/domain/` | Product, cart, checkout, order components |
+| `src/config/` | Brand, categories, copy, feature flags |
+| `src/data/mock/` | Catalogue, orders, delivery zones, images |
+| `src/index.css` | Design tokens (colors, type scale, radii, shadows) |
+
+## Imagery
+
+Product images are branded placeholders (`src/data/mock/images.ts`). Set `url` on any `ProductImage` to a real photo and `ProductMedia` renders it with no component changes. Real farm photography is the single biggest remaining upgrade.
+
+## Deploy
+
+Static build on Vercel; `vercel.json` rewrites all paths to `index.html` for client-side routing.
